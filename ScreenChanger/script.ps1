@@ -1,7 +1,7 @@
 # Définir le chemin de l'image de fond d'écran
 $wallpaperPath = "$env:USERPROFILE\Pictures\wallpaper.jpg"
 
-# Télécharger l'image de fond d'écran depuis GitHub et la place dans le dossier Images
+# Télécharge l'image de fond d'écran depuis GitHub et la place dans le dossier Images
 Invoke-WebRequest -Uri "https://github.com/MagikarpLv13/bad_usb_payloads/raw/master/ScreenChanger/wallpaper.jpg" -OutFile $wallpaperPath
 
 # Change le fond d'écran de l'utilisateur
