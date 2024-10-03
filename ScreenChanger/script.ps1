@@ -56,6 +56,7 @@ while ($true) {
             # Boucle pour attendre que la fenêtre CMD soit fermée
             while (!$cmdProcess.HasExited) {
                 Start-Sleep -Milliseconds 500
+                $originalPOS = [Windows.Forms.Cursor]::Position.X
             }
         }
         else {
