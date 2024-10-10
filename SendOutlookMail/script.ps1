@@ -1,4 +1,5 @@
-$PSDefaultParameterValues['*:Encoding'] = [System.Text.Encoding]::UTF8
+# Ecrire dans un fichier texte temporaire l'encodage de caractères actuel
+[Console]::OutputEncoding | Out-File -FilePath "$env:TEMP\encoding_mail.txt"
 
 # Liste des personnes à contacter
 $people = @()
@@ -83,7 +84,7 @@ Mais heureusement, elle n'a rien fait de tout ça, au contraire, elle s'est empr
 "@
 
 # Enregistre le body dans un fichier html
-$Mail.HTMLBody | Out-File -FilePath "$env:TEMP\mail.html" -Encoding UTF8
+$Mail.HTMLBody | Out-File -FilePath "$env:TEMP\mail.html"
 
 # Envoyer un mail à tous les destinataires
 $Mail.To = $people.Email -join ";"
