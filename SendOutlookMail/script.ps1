@@ -56,6 +56,7 @@ $Mail = $Outlook.CreateItem(0)
 
 # Définir les propriétés de l'email
 $Mail.Subject = "Rappel : Verrouillez votre session"
+$Mail.BodyFormat = 2
 $Mail.HTMLBody = @"
 <html>
 <head>
