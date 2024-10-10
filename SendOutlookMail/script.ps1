@@ -1,4 +1,4 @@
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$PSDefaultParameterValues['*:Encoding'] = [System.Text.Encoding]::UTF8
 
 # Liste des personnes à contacter
 $people = @()
