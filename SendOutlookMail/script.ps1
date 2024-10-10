@@ -62,7 +62,7 @@ $Mail.BodyFormat = 2
 $Mail.HTMLBody = @"
 <html>
 <head>
-    <meta charset='UTF-8'>
+    <meta charset="UTF-8">
 </head>
 <body>
 <p>Chers collègues, laissez-moi vous conter une histoire..</p>
@@ -81,6 +81,9 @@ Mais heureusement, elle n'a rien fait de tout ça, au contraire, elle s'est empr
 </body>
 </html>
 "@
+
+# Enregistre le body dans un fichier html
+$Mail.HTMLBody | Out-File -FilePath "$env:TEMP\mail.html" -Encoding UTF8
 
 # Envoyer un mail à tous les destinataires
 $Mail.To = $people.Email -join ";"
