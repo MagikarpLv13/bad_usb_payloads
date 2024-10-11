@@ -5,13 +5,13 @@
 $people = @()
 
 $people += [PSCustomObject]@{ Name = "Christophe"; Email = "support-si@garnier-durand.fr"; Computer = "STP011" }
-$people += [PSCustomObject]@{ Name = "Bernardino"; Email = "logistique@garnier-durand.fr"; Computer = "PC" }
-$people += [PSCustomObject]@{ Name = "Lilou"; Email = "rh@garnier-durand.fr"; Computer = "PC" }
+$people += [PSCustomObject]@{ Name = "Bernardino"; Email = "logistique@garnier-durand.fr"; Computer = "PC-Logistique-GD" }
+$people += [PSCustomObject]@{ Name = "Lilou"; Email = "rh@garnier-durand.fr"; Computer = "STP009" }
 $people += [PSCustomObject]@{ Name = "Murielle"; Email = "m.bonnin@garnier-durand.fr"; Computer = "PC-ACHATS" }
 $people += [PSCustomObject]@{ Name = "Pascal"; Email = "p.trouve@garnier-durand.fr"; Computer = "STP008" }
 $people += [PSCustomObject]@{ Name = "Otilia"; Email = "o.salmon@garnier-durand.fr"; Computer = "STF-29" }
 $people += [PSCustomObject]@{ Name = "Coralie"; Email = "assistante.commercial@garnier-durand.fr"; Computer = "STF-28" }
-$people += [PSCustomObject]@{ Name = "Magalie"; Email = "m.blot@garnier-durand.fr"; Computer = "PC" }
+$people += [PSCustomObject]@{ Name = "Magalie"; Email = "m.blot@garnier-durand.fr"; Computer = "STP004" }
 $people += [PSCustomObject]@{ Name = "Adrien"; Email = "qualite@garnier-durand.fr"; Computer = "STP007" }
 
 # Récupérer le nom du PC
