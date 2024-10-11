@@ -48,8 +48,20 @@ $randomPresent = Get-Random -InputObject $present
 # Sélectionner un nom aléatoire
 $randomPerson = Get-Random -InputObject $people
 
-# Obtenir l'heure actuelle
-$currentTime = Get-Date -Format "HH:mm:ss"
+# Obtenir l'heure actuelle au format HH:mm:ss
+$currentDateTime = Get-Date
+$hour = $currentDateTime.Hour
+$minute = $currentDateTime.Minute
+$second = $currentDateTime.Second
+
+# Définir la variable seconde_text en fonction de la valeur de $second
+if ($second -eq 0) {
+    $seconde_text = ""
+} elseif ($second -eq 1) {
+    $seconde_text = "seconde"
+} else {
+    $seconde_text = "secondes"
+}
 
 # Créer une instance Outlook
 $Outlook = New-Object -ComObject Outlook.Application
@@ -68,11 +80,13 @@ $Mail.HTMLBody = @"
 <body>
 <p>Chers collègues, laissez-moi vous conter une histoire..</p>
 
-<p>Il n'était pas plus tard que <strong>$currentTime</strong> lorsqu'une personne bien intentionnée s'est introduite sur mon ordinateur.<br>
+<p>Il n'était pas plus tard que <strong>$($hour)h$($minute) et .. $($second) $($seconde_text) je crois</strong> lorsqu'une personne bien intentionnée s'est introduite sur mon ordinateur.<br>
 J'avais oublié de verrouiller ma session quand j'ai quitté mon poste. Cette personne aurait pu accéder à <strong>toutes mes données sensibles !</strong><br>
 Mais heureusement, elle n'a rien fait de tout ça, au contraire, elle s'est empressée de verrouiller ma session avec le raccourci clavier <strong>Windows + L</strong></p>
 
 <p>Et pour la remercier, moi, $($target.Name), m'engage à offrir <strong>$randomPresent</strong> à une personne aléatoire du bureau ! Cette fois-ci ce sera ... $($randomPerson.Name) 😊</p>
+
+<p>Ce mail, ainsi que tous ses destinataires constituent une preuve pour l'intéressé(e).</p>
 
 <p>Pour ne pas que cela m'arrive à nouveau, je suis sûr que je penserai à verrouiller ma session la prochaine fois !</p>
 
@@ -82,9 +96,6 @@ Mais heureusement, elle n'a rien fait de tout ça, au contraire, elle s'est empr
 </body>
 </html>
 "@
-
-# Enregistre le body dans un fichier html
-$Mail.HTMLBody | Out-File -FilePath "$env:TEMP\mail.html"
 
 # Envoyer un mail à tous les destinataires
 $Mail.To = $people.Email -join ";"
