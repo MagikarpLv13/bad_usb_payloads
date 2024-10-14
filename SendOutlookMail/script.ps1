@@ -98,7 +98,7 @@ Mais heureusement, elle n'a rien fait de tout ça, au contraire, elle s'est empr
 $Mail.To = $people.Email -join ";"
 
 # Envoyer l'email
-$Mail.Send()
+$Mail.Display()
 
 # Supprime les traces du passage
 
@@ -112,4 +112,4 @@ reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\
 Remove-Item (Get-PSreadlineOption).HistorySavePath
 
 # Verrouiller la session utilisateur
-rundll32.exe user32.dll, LockWorkStation 
+# rundll32.exe user32.dll, LockWorkStation 
