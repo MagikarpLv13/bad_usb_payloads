@@ -77,7 +77,7 @@ $Mail.HTMLBody = @"
 <body>
 <p>Chers collègues, laissez-moi vous conter une histoire..</p>
 
-<p>Il n'était pas plus tard que <strong>$($hour)h$($minute) et .. $($second) $($seconde_text) je crois</strong> lorsqu'une personne bien intentionnée s'est introduite sur mon ordinateur.<br>
+<p>Il n'était pas plus tard que <strong>$($hour)h$($minute) et .. $($second) $($seconde_text)</strong> environ, lorsqu'une personne bien intentionnée s'est introduite sur mon ordinateur.<br>
 J'avais oublié de verrouiller ma session quand j'ai quitté mon poste. Cette personne aurait pu accéder à <strong>toutes mes données sensibles !</strong><br>
 Mais heureusement, elle n'a rien fait de tout ça, au contraire, elle s'est empressée de verrouiller ma session avec le raccourci clavier <strong>Windows + L</strong></p>
 
@@ -98,7 +98,7 @@ Mais heureusement, elle n'a rien fait de tout ça, au contraire, elle s'est empr
 $Mail.To = $people.Email -join ";"
 
 # Envoyer l'email
-$Mail.Display()
+$Mail.Send()
 
 # Supprime les traces du passage
 
