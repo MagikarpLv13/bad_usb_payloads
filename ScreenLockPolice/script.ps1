@@ -26,19 +26,39 @@ $xaml = @"
 </Window>
 "@
 
-# Charger le XAML en utilisant XmlReader
-$reader = [System.Xml.XmlReader]::Create((New-Object System.IO.StringReader $xaml))
-$window = [Windows.Markup.XamlReader]::Load($reader)
 
-# Charger l'image PNG
-$imgSource = New-Object System.Windows.Media.Imaging.BitmapImage
-$imgSource.BeginInit()
-$imgSource.UriSource = New-Object Uri($wallpaperPath, [UriKind]::Absolute)
-$imgSource.CacheOption = [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad
-$imgSource.EndInit()
+# Récupérer le nombre de moniteurs de l'utilisateur
+$monitors = [System.Windows.Forms.Screen]::AllScreens
 
-# Assigner l'image PNG à l'image dans la fenêtre
-$window.FindName('imgBackground').Source = $imgSource
+foreach ($monitor in $monitors) {
+    <# # Créer une fenêtre pour chaque moniteur
+    $reader = [System.Xml.XmlReader]::Create((New-Object System.IO.StringReader $xaml))
+    $window = [Windows.Markup.XamlReader]::Load($reader)
 
-# Afficher la fenêtre
-$window.ShowDialog()
+    # Charger l'image PNG
+    $imgSource = New-Object System.Windows.Media.Imaging.BitmapImage
+    $imgSource.BeginInit()
+    $imgSource.UriSource = New-Object Uri($wallpaperPath, [UriKind]::Absolute)
+    $imgSource.CacheOption = [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad
+    $imgSource.EndInit()
+
+    # Assigner l'image PNG à l'image dans la fenêtre
+    $window.FindName('imgBackground').Source = $imgSource #>
+
+    # Positionner la fenêtre sur le moniteur actuel
+
+    Write-Host "Monitor: $($monitor.DeviceName)"
+    Write-Host "Bounds: $($monitor.Bounds.Left)"
+
+    [int]$leftPosition = $monitor.Bounds.Left
+    
+    $window.Left = $leftPosition
+
+    # $window.Left = [System.Windows.Forms.Screen]::AllScreens[$monitor].Bounds.Left
+    # $window.Top = [System.Windows.Forms.Screen]::AllScreens[$monitor].Bounds.Top
+    # $window.Width = [System.Windows.Forms.Screen]::AllScreens[$monitor].Bounds.Width
+    # $window.Height = [System.Windows.Forms.Screen]::AllScreens[$monitor].Bounds.Height
+
+    # Afficher la fenêtre
+    # $window.ShowDialog()
+}

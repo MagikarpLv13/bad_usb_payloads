@@ -1,12 +1,9 @@
-# Ecrire dans un fichier texte temporaire l'encodage de caractères actuel
-[Console]::OutputEncoding | Out-File -FilePath "$env:TEMP\encoding_mail.txt"
-
 # Liste des personnes à contacter
 $people = @()
 
 $people += [PSCustomObject]@{ Name = "Christophe"; Email = "support-si@garnier-durand.fr"; Computer = "STP011" }
 $people += [PSCustomObject]@{ Name = "Bernardino"; Email = "logistique@garnier-durand.fr"; Computer = "PC-Logistique-GD" }
-$people += [PSCustomObject]@{ Name = "Lilou"; Email = "rh@garnier-durand.fr"; Computer = "STP009" }
+$people += [PSCustomObject]@{ Name = "Lilou"; Email = "rh@garnier-durand.fr"; Computer = "STF-27" }
 $people += [PSCustomObject]@{ Name = "Murielle"; Email = "m.bonnin@garnier-durand.fr"; Computer = "PC-ACHATS" }
 $people += [PSCustomObject]@{ Name = "Pascal"; Email = "p.trouve@garnier-durand.fr"; Computer = "STP008" }
 $people += [PSCustomObject]@{ Name = "Otilia"; Email = "o.salmon@garnier-durand.fr"; Computer = "STF-29" }
@@ -100,10 +97,9 @@ Mais heureusement, elle n'a rien fait de tout ça, au contraire, elle s'est empr
 # Envoyer un mail à tous les destinataires
 $Mail.To = $people.Email -join ";"
 
-# Afficher l'email
+# Envoyer l'email
 $Mail.Display()
 
-<#
 # Supprime les traces du passage
 
 # Supprime le conteu du dossier Temp
@@ -117,4 +113,3 @@ Remove-Item (Get-PSreadlineOption).HistorySavePath
 
 # Verrouiller la session utilisateur
 rundll32.exe user32.dll, LockWorkStation 
-#>
