@@ -1,3 +1,5 @@
+Add-Type -AssemblyName System.Windows.Forms
+
 # Liste des personnes à contacter
 $people = @()
 
