@@ -13,6 +13,9 @@ $people += [PSCustomObject]@{ Name = "Coralie"; Email = "assistante.commercial@g
 $people += [PSCustomObject]@{ Name = "Magalie"; Email = "m.blot@garnier-durand.fr"; Computer = "STP004" }
 $people += [PSCustomObject]@{ Name = "Adrien"; Email = "qualite@garnier-durand.fr"; Computer = "STP007" }
 
+# Mélanger la liste des personnes
+$people = $people | Get-Random -Count ($people.Count)
+
 # Récupérer le nom du PC
 $computerName = $env:COMPUTERNAME
 
@@ -38,7 +41,10 @@ $present = @(
     "un pain aux raisins", 
     "un cookie", 
     "un muffin", 
-    "une brioche aux pralines"
+    "une brioche aux pralines",
+    "un jambon beurre",
+    "un sandwich au pâté",
+    "un sandwich à la rillette"
     )
 
 # Sélectionner un cadeau aléatoire
