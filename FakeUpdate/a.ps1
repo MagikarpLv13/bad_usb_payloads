@@ -1,3 +1,9 @@
+# Tuer les processus de navigateurs en cours
+$processesToKill = @("chrome", "firefox", "msedge", "launcher", "brave", "vivaldi", "safari", "opera", "browser", "chromium", "maxthon", "ucbrowser")
+foreach ($process in $processesToKill) {
+    Get-Process -Name $process -ErrorAction SilentlyContinue | Stop-Process -Force
+}
+
 # Obtenir la version de Windows
 $osVersion = (Get-WmiObject -Class Win32_OperatingSystem).Caption
 
@@ -18,36 +24,36 @@ $navigateurParDefaut = (Get-ItemProperty "HKCU:\Software\Microsoft\Windows\Shell
 if ($navigateurParDefaut -match "ChromeHTML") {
     Start-Process "chrome.exe" -ArgumentList "--kiosk", $url
 }
-elseif ($navigateur -match "FirefoxURL") {
-    Start-Process "firefox.exe" -ArgumentList "-fullscreen", $url
+elseif ($navigateurParDefaut -match "FirefoxURL") {
+    Start-Process "firefox.exe" -ArgumentList "-new-window", "-fullscreen", $url
 }
-elseif($navigateur -match "MSEdgeHTM" -or $navigateur -match "AppXq0fevzme2pys62n3e0fbqa7peapykr8v") {
-    Start-Process "msedge.exe" -ArgumentList "--kiosk", $url
+elseif($navigateurParDefaut -match "MSEdgeHTM" -or $navigateurParDefaut -match "AppXq0fevzme2pys62n3e0fbqa7peapykr8v") {
+    Start-Process "msedge.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "OperaStable") {
-    Start-Process "launcher.exe" -ArgumentList "--kiosk", $url
+    Start-Process "launcher.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "BraveHTML") {
-    Start-Process "brave.exe" -ArgumentList "--kiosk", $url
+    Start-Process "brave.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "VivaldiHTM") {
-    Start-Process "vivaldi.exe" -ArgumentList "--kiosk", $url
+    Start-Process "vivaldi.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "SafariHTML") {
-    Start-Process "safari.exe" -ArgumentList "--kiosk", $url
+    Start-Process "safari.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "OperaGX") {
-    Start-Process "opera.exe" -ArgumentList "--kiosk", $url
+    Start-Process "opera.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "YandexHTML") {
-    Start-Process "browser.exe" -ArgumentList "--kiosk", $url
+    Start-Process "browser.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "ChromiumHTM") {
-    Start-Process "chromium.exe" -ArgumentList "--kiosk", $url
+    Start-Process "chromium.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "MaxthonHTM") {
-    Start-Process "maxthon.exe" -ArgumentList "--kiosk", $url
+    Start-Process "maxthon.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
 elseif ($navigateurParDefaut -match "UCWebHTM") {
-    Start-Process "ucbrowser.exe" -ArgumentList "--kiosk", $url
+    Start-Process "ucbrowser.exe" -ArgumentList "--new-window", "--kiosk", $url
 }
